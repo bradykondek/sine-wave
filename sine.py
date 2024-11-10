@@ -22,7 +22,7 @@ def generateSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):  #
     time = np.linspace(0, duration, int(sample_rate * duration), endpoint = False)
 
     # Sine wave value
-    sineWave = amplitude * np.sin(2 * np.pi * frequency * t)  # sine wave formula
+    sineWave = amplitude * np.sin(2 * np.pi * frequency * time)  # sine wave formula
 
     # Return time array and sine wave value as tuple
     return time, sineWave
@@ -44,4 +44,7 @@ def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
 # Main function
 def main():
 
-    #
+    # Generate sine wave, then plot results
+    plotSineWave(frequency=5, amplitude=1, duration=2)
+
+main()
