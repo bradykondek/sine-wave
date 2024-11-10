@@ -27,6 +27,20 @@ def generateSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):  #
     # Return time array and sine wave value as tuple
     return time, sineWave
 
+# Plot sine wave
+def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
+
+    # Call generateSineWave function to get time array and sine wave
+    time, sineWave = generateSineWave(frequency, amplitude, duration, sample_rate)
+
+    # Plot results
+    plt.plot(time, sineWave)
+    plt.title(f"Sine wave - {frequency} Hz")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Amplitude")
+    plt.grid(True)
+    plt.show()
+
 # Main function
 def main():
 
