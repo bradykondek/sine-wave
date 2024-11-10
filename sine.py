@@ -45,6 +45,6 @@ def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
 def main():
 
     # Generate sine wave, then plot results
-    plotSineWave(frequency=5, amplitude=1, duration=2)
+    plotSineWave(frequency=10, amplitude=1, duration=2)
 
 main()
