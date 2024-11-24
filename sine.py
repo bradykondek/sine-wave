@@ -6,13 +6,13 @@ import matplotlib.pyplot as plt
 def getValues():
 
     # Prompt user for frequency
-    frequency = input("Enter frequency: ")
+    frequency = float(input("Enter frequency: "))
 
     # Prompt user for amplitude
-    amplitude = input("Enter amplitude: ")
+    amplitude = float(input("Enter amplitude: "))
 
     # Prompt user for duration
-    duration = input("Enter duration: ")
+    duration = float(input("Enter duration: "))
 
     # Return user-inputted values
     return frequency, amplitude, duration
