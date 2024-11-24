@@ -2,6 +2,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Prompt user for frequency, amplitude, and duration
+def getValues():
+
+    # Prompt user for frequency
+    frequency = input("Enter frequency: ")
+
+    # Prompt user for amplitude
+    amplitude = input("Enter amplitude: ")
+
+    # Prompt user for duration
+    duration = input("Enter duration: ")
+
+    # Return user-inputted values
+    return frequency, amplitude, duration
+
 # Model a sine wave
 def generateSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):  # sets the "=" values to the following values if corresponding value has no direct input
 
@@ -44,7 +59,10 @@ def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
 # Main function
 def main():
 
+    # Prompt user for frequency, amplitude, and duration
+    freq, amp, dur = getValues()
+    
     # Generate sine wave, then plot results
-    plotSineWave(frequency=10, amplitude=1, duration=2)
+    plotSineWave(frequency=freq, amplitude=amp, duration=dur)
 
 main()
