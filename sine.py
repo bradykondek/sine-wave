@@ -1,7 +1,8 @@
 # Include libaries
 import numpy as np
-import matplotlib.pyplot as plt
-import sounddevice as sd
+import matplotlib.pyplot as plt  # used to plot sine wave
+import sounddevice as sd  # used to play sine wave
+from scipy.io.wavfile import write  # used to save sine wave as WAV file
 
 # Prompt user for frequency, amplitude, and duration
 def getValues():
@@ -50,10 +51,8 @@ def playSineWave(sineWave, sample_rate):
     sd.play(sineWave, samplerate=sample_rate)
 
     # Wait while sine wave is being played
+    print("Playing sine wave...")
     sd.wait()
-
-# Save results to wav file
-#
 
 # Plot sine wave
 def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
@@ -71,9 +70,6 @@ def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
 
     # Play sine wave
     playSineWave(sineWave, sample_rate)
-
-    # Save results to wav file
-    #
 
 # Main function
 def main():
