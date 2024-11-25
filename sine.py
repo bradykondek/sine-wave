@@ -1,6 +1,22 @@
 # Include libaries
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # used to plot sine wave
+import sounddevice as sd  # used to play sine wave
+
+# Prompt user for frequency, amplitude, and duration
+def getValues():
+
+    # Prompt user for frequency
+    frequency = float(input("Enter frequency: "))
+
+    # Prompt user for amplitude
+    amplitude = float(input("Enter amplitude: "))
+
+    # Prompt user for duration
+    duration = float(input("Enter duration: "))
+
+    # Return user-inputted values
+    return frequency, amplitude, duration
 
 # Model a sine wave
 def generateSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):  # sets the "=" values to the following values if corresponding value has no direct input
@@ -27,6 +43,16 @@ def generateSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):  #
     # Return time array and sine wave value as tuple
     return time, sineWave
 
+# Play sine wave
+def playSineWave(sineWave, sample_rate):
+
+    # Play the sine wave
+    sd.play(sineWave, samplerate=sample_rate)
+
+    # Wait while sine wave is being played
+    print("Playing sine wave...")
+    sd.wait()
+
 # Plot sine wave
 def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
 
@@ -41,10 +67,16 @@ def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
     plt.grid(True)
     plt.show()
 
+    # Play sine wave
+    playSineWave(sineWave, sample_rate)
+
 # Main function
 def main():
 
+    # Prompt user for frequency, amplitude, and duration
+    freq, amp, dur = getValues()
+    
     # Generate sine wave, then plot results
-    plotSineWave(frequency=10, amplitude=1, duration=2)
+    plotSineWave(frequency=freq, amplitude=amp, duration=dur)
 
 main()
