@@ -2,6 +2,8 @@
 import numpy as np
 import matplotlib.pyplot as plt  # used to plot sine wave
 import sounddevice as sd  # used to play sine wave
+import tkinter as tk
+from tkinter import messagebox
 
 # Prompt user for frequency, amplitude, and duration
 def getValues():
@@ -46,12 +48,52 @@ def generateSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):  #
 # Play sine wave
 def playSineWave(sineWave, sample_rate):
 
-    # Play the sine wave
-    sd.play(sineWave, samplerate=sample_rate)
+    # Control function
+    # Play sound
+    def play_sound():
+
+        # Disable play button
+        play_button.config(state=tk.DISABLED)  # disable play button while sound is playing
+        
+        # Print status message
+        print("Playing sound...")
+
+        # Play sound
+        sd.play(sineWave, sample_rate)
+
+        # Re-enable play button after audio has finished playing
+        play_button.config(state=tk.NORMAL)
+
+    # Stop sound
+    def stop_sound():
+
+        # Stop sound
+        sd.stop()
+
+        # Enable play button
+        play_button.config(state=tk.NORMAL)  # enable play button once stopped
+        
+        # Print status message
+        print("Stopped sound.")
 
     # Wait while sine wave is being played
     print("Playing sine wave...")
     sd.wait()
+
+    # Setting up the tkinter window
+    root = tk.Tk()
+    root.title("Sine Wave Player")
+
+    # Add play button
+    play_button = tk.Button(root, text="Play", command=play_sound)
+    play_button.pack(pady=10)
+
+    # Add stop button
+    stop_button = tk.Button(root, text="Stop", command=stop_sound)
+    stop_button.pack(pady=10)
+
+    # Start the tkinter program
+    root.mainloop()
 
 # Plot sine wave
 def plotSineWave(frequency=1, amplitude=1, duration=2, sample_rate=1000):
